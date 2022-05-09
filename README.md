@@ -1,6 +1,4 @@
-# Untitled
-
-## # Setup Kubernetes Cluster On Ubuntu/Debian
+## Setup Kubernetes Cluster On Ubuntu/Debian
 
 ## Clone The Repo
 
