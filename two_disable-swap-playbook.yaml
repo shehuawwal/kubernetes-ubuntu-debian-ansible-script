@@ -1,0 +1,17 @@
+---
+- name: Disable swap on all k8s nodes
+  hosts: all
+  become: true
+  tasks:
+    - name: disable swap memorry
+      shell: sudo swapoff -a
+    
+    - name: remove swap file
+      shell: sudo rm /swap.img
+  
+    - name: delete swap memory from fstab
+      shell: sed -i '/swap/d' /etc/fstab
+
+    - name: reboot the server
+      shell: "sudo reboot"
+        

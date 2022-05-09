@@ -1,0 +1,22 @@
+---
+- name: K8s Cluster Playbook By Shehu Awwal
+  hosts: all
+  become: true
+  tasks:
+    - name: Copy script to k8s servers 
+      copy: >
+        src={{ item }} dest=/tmp/ mode=0777 
+        owner=root
+        group=root
+      with_items:
+        - 1_load_modules.sh
+        - 2_install_containerd.sh
+        - 3_install_k8s_tools.sh
+
+    - name: Configure & Install the required tools
+      shell:
+        "/tmp/{{ item }}"
+      with_items:
+        - 1_load_modules.sh
+        - 2_install_containerd.sh
+        - 3_install_k8s_tools.sh

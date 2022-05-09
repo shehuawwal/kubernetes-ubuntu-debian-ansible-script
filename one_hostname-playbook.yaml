@@ -1,0 +1,11 @@
+---
+- name: k8s cluster hostname config
+  hosts: all
+  become: true
+  tasks:
+    - name: copy shell hostname shell script
+      copy: src=0_host_config.sh dest=/tmp/ mode=0777
+    
+    - name: execute the hostname shell script
+      shell:
+        "/tmp/0_host_config.sh"
